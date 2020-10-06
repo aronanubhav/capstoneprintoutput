@@ -1,27 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstonecommittodb
-  labels:
-    app: capstonecommittodb
+        name: capstoneprintoutput
 spec:
   replicas: 2
   selector:
-    matchLabels:
-      app: capstonecommittodb
+          matchLabels:
+                  app: capstoneprintoutput
   template:
     metadata:
       labels:
-        app: capstonecommittodb
+        app: capstoneprintoutput
     spec:
       containers:
-      - name: capstonecommittodb
-        image: aronanubhav/capstonecommittodb
+      - image: aronanubhav/capstoneprintoutput
+        name: capstoneprintoutput
+        imagePullPolicy: Always          
         resources:
-          limits:
-            cpu: "1.5"
           requests:
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"       
         ports:
         - containerPort: 8080
         livenessProbe:
