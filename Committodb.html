@@ -1,0 +1,20 @@
+<body style="background-color:powderblue;">
+<h1>Use this page to store the output in a database</h1>
+
+
+<form name="sentiment_analyser">
+  <button type="submit" onclick="commit_db()">Commit to Database</button>
+</form>
+
+<script>
+function commit_db(){
+  const form = document.forms['sentiment_analyser']
+const scriptURL = "https://script.google.com/macros/s/AKfycbwUqKeoBErbpt9--odqjQwEZPSGfnc6jf6dHVJ9_OquiUR-ZSk/exec";
+form.addEventListener('submit', e => {
+    e.preventDefault();  
+    fetch(scriptURL);
+})
+    alert ('Data added to database'); 
+}
+</script>
+</body>

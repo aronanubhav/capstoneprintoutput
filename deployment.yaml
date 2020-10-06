@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstonecommittodb
+  labels:
+    app: capstonecommittodb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstonecommittodb
+  template:
+    metadata:
+      labels:
+        app: capstonecommittodb
+    spec:
+      containers:
+      - name: capstonecommittodb
+        image: aronanubhav/capstonecommittodb
+        resources:
+          limits:
+            cpu: "1.5"
+          requests:
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 30000000
